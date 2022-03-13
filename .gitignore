@@ -91,6 +91,7 @@ target/
 
 # Data folders
 /data/*
+!/data/imgs
 /models/*
 /logs/*
 /notebooks/

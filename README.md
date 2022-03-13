@@ -21,3 +21,7 @@ python scorex/model/predictor.py data/raw/top-100-shots-rallies-2018-atp-season.
 
 1. Find bounding box of score tableu in bottom left corner with OpenCV.
 2. Parse it with Tesseract.
+
+# Example
+
+<img src="./data/imgs/demo.png" align="center" width=800>
