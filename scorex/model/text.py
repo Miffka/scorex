@@ -39,7 +39,7 @@ class ScoreParser:
     name_pat = r"([]>\*\.A-Za-z\ ]+)"
     clean_name_pat = r"[A-Z\.a-z]+"
     digit_pat = r"[0-9]+"
-    serving_pat = r"[>\*]+"
+    serving_pat = r"[>\*]"
 
     def process_tesseract_data(self, data: pd.DataFrame):
         score_obj = TennisScore()
@@ -54,10 +54,9 @@ class ScoreParser:
                     name += f" {text}"
 
                 if re.match(self.digit_pat, text):
-                    digits.append(int(text))
+                    digits.extend(map(int, re.findall(self.digit_pat, text)))
 
-            print(name)
-            is_serving = bool(re.match(self.serving_pat, name))
+            is_serving = bool(re.search(self.serving_pat, name))
             name = " ".join(re.findall(self.clean_name_pat, name))
             player = PlayerScore(name, score=digits, is_serving=is_serving)
 
